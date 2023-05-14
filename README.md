@@ -15,7 +15,7 @@
 <br>
 
 ## ⚙️ 개발 환경
-- Python 3.9,13
+- Python 3.9.13  
 ```pip3 install django```  
 ```pip3 install djangorestframework```  
 ```pip3 install drf-yasg```  
