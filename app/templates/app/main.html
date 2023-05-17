@@ -1,0 +1,9 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+<p>노치 메인 페이지</p>
+
+<img style="width:100px;" src="{% static 'app/image.jpg' %}" alt="Notch"/><br>
+
+<a href="{% url 'login' %}">노치 메인 페이지</a>
+{% endblock %}
