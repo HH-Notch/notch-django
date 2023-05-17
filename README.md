@@ -22,7 +22,7 @@
 ```pip3 install drf-yasg```  
 ```pip3 install django-cors-headers```  
 ```pip3 install djangorestframework-simplejwt```  
-```pip3 install dj-rest-auth```  
+```pip3 install django-rest-auth```  
 ```pip3 install django-allauth```  
 ```python3 manage.py runserver```  
 <br>
