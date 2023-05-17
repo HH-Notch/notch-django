@@ -11,9 +11,19 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+import json
+import sys
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+ROOT_DIR = os.path.dirname(BASE_DIR)
+SECRET_BASE_FILE = os.path.join(BASE_DIR, 'secrets.json')
+
+secrets = json.loads(open(SECRET_BASE_FILE).read())
+for key, value in secrets.items():
+    setattr(sys.modules[__name__], key, value)
 
 
 # Quick-start development settings - unsuitable for production
@@ -37,11 +47,28 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'drf_yasg',
-    'rest_framework',
-    'corsheaders',
+    'django.contrib.sites',
+    # my app
     'app',
+    # swagger
+    'drf_yasg',
+    'corsheaders',
+    # django-rest-auth
+    'rest_framework',
+    'rest_framework_simplejwt.token_blacklist',
+    'dj_rest_auth',
+    'rest_auth.registration',
+    'rest_framework.authtoken',
+    # django-allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.kakao',
+    'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.google',
 ]
+
+AUTH_USER_MODEL = 'app.Account'
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -130,3 +157,41 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # cors 관련 추가
 CORS_ORIGIN_WHITELIST = ['http://localhost:8080','http://127.0.0.1:8080']
 CORS_ALLOW_CREDENTIALS = True
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
+    ),
+}
+
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_CONFIRM_EMAIL_ON_GET = False
+ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = '/?verification=1'
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = '/?verification=1'
+
+SITE_ID = 2
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+REST_USE_JWT = True
+
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=2),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': True,
+}
+
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'app.serializer.AccountSerializer',
+}

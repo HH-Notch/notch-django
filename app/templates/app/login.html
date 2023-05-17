@@ -1,0 +1,9 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+<p>노치를 시작해볼까요?</p>
+
+<img style="width:100px;" src="{% static 'app/image.jpg' %}" alt="Notch"/><br>
+
+<a href="{% url 'login' %}">로그인 진행</a>
+{% endblock %}
