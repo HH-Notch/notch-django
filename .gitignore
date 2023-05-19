@@ -2,6 +2,6 @@ key_notch.pem
 
 secrets.json
 
-.DS_Store
+# .DS_Store
 
-.idea
+# .idea
