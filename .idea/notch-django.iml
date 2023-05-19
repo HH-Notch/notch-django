@@ -4,6 +4,8 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="first-django" />
+    <orderEntry type="module" module-name="be" />
   </component>
   <component name="PyDocumentationSettings">
     <option name="format" value="PLAIN" />

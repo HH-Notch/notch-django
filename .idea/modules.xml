@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../be-main/.idea/be.iml" filepath="$PROJECT_DIR$/../be-main/.idea/be.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../lecture/first-django/.idea/first-django.iml" filepath="$PROJECT_DIR$/../lecture/first-django/.idea/first-django.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/notch-django.iml" filepath="$PROJECT_DIR$/.idea/notch-django.iml" />
     </modules>
   </component>

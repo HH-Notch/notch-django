@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 import json
 import sys
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -63,8 +64,6 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.kakao',
-    'allauth.socialaccount.providers.github',
     'allauth.socialaccount.providers.google',
 ]
 
@@ -155,7 +154,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # cors 관련 추가
-CORS_ORIGIN_WHITELIST = ['http://localhost:8080','http://127.0.0.1:8080']
+CORS_ORIGIN_WHITELIST = ['http://localhost:8080', 'http://127.0.0.1:8080']
 CORS_ALLOW_CREDENTIALS = True
 
 REST_FRAMEWORK = {
@@ -183,8 +182,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 REST_USE_JWT = True
 
-from datetime import timedelta
-
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(hours=2),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
@@ -194,4 +191,26 @@ SIMPLE_JWT = {
 
 REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'app.serializer.AccountSerializer',
+}
+
+AUTHENTICATION_BACKENDS = {
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend'
+}
+
+SSOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': '1079264122459-22l2of09rl1ahuudi1gsd2hl1m9n2b3q.apps.googleusercontent.com',
+            'secret': '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',
+            'key': ''
+        },
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online'
+        }
+    }
 }

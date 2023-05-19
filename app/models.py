@@ -20,16 +20,18 @@ class Account(AbstractUser):
     def __str__(self):
         return self.email
 
+
 class Toggle(models.Model):
-    mor_todo = models.BooleanField(default=False)
-    mor_depart = models.BooleanField(default=False)
-    mor_dest = models.BooleanField(default=False)
-    mor_weather = models.BooleanField(default=False)
-    aft_todo =  models.BooleanField(default=False)
-    aft_whitenoise =  models.BooleanField(default=False)
-    aft_nap =  models.BooleanField(default=False)
-    eve_progress =  models.BooleanField(default=False)
-    eve_health =  models.BooleanField(default=False)
-    eve_question =  models.BooleanField(default=False)
-    eve_todo =  models.BooleanField(default=False)
-    eve_play =  models.BooleanField(default=False)
+    # email = models.ForeignKey('Account', on_delete=models.CASCADE)
+    mor_todo = models.IntegerField(default=1)
+    mor_depart = models.IntegerField(default=1)
+    mor_dest = models.IntegerField(default=1)
+    mor_weather = models.IntegerField(default=1)
+    aft_todo = models.IntegerField(default=1)
+    aft_whitenoise = models.IntegerField(default=1)
+    aft_nap = models.IntegerField(default=1)
+    eve_progress = models.IntegerField(default=1)
+    eve_health = models.IntegerField(default=1)
+    eve_question = models.IntegerField(default=1)
+    eve_todo = models.IntegerField(default=1)
+    eve_play = models.IntegerField(default=1)
