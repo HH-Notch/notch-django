@@ -198,15 +198,15 @@ AUTHENTICATION_BACKENDS = {
     'allauth.account.auth_backends.AuthenticationBackend'
 }
 
-SSOCIALACCOUNT_PROVIDERS = {
+SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'APP': {
-            'client_id': '1079264122459-22l2of09rl1ahuudi1gsd2hl1m9n2b3q.apps.googleusercontent.com',
-            'secret': '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',
-            'key': ''
+            'client_id',
+            'secret',
+            'key',
         },
         'SCOPE': [
-            'profile',
+            # 'profile',
             'email',
         ],
         'AUTH_PARAMS': {

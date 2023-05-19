@@ -50,6 +50,12 @@ BASE_URL = 'http://localhost:8080'
 GOOGLE_CALLBACK_URI = BASE_URL + 'app/google/callback/'
 
 
+class GoogleLogin(SocialLoginView):
+    adapter_class = google_view.GoogleOAuth2Adapter
+    callback_url = GOOGLE_CALLBACK_URI
+    client_class = OAuth2Client
+
+
 def google_login(request):
     # google_login 실행 후 로그인 성공 시, Callback 함수로 Code 값 전달받음
     scope = "https://www.googleapis.com/auth/userinfo.email"
@@ -63,8 +69,7 @@ def google_callback(request):
     code = request.GET.get('code')
 
     # 1. 받은 Code로 Google에 Access Token 요청
-    token_req = requests.post(
-        f"https://oauth2.googleapis.com/token?client_id={client_id}&client_secret={client_secret}&code={code}&grant_type=authorization_code&redirect_uri={GOOGLE_CALLBACK_URI}&state={state}")
+    token_req = requests.post(f"https://oauth2.googleapis.com/token?client_id={client_id}&client_secret={client_secret}&code={code}&grant_type=authorization_code&redirect_uri={GOOGLE_CALLBACK_URI}&state={state}")
 
     # json으로 변환 후 에러 부분 파싱
     token_req_json = token_req.json()
@@ -72,7 +77,7 @@ def google_callback(request):
 
     # 에러 발생 시 종료
     if error is not None:
-        raise JSONDecodeError("JSON decoding failed", error, error.pos)
+        raise JSONDecodeError(error)
 
     # 성공 시 access_token 가져오기
     access_token = token_req_json.get('access_token')
@@ -135,9 +140,3 @@ def google_callback(request):
     except SocialAccount.DoesNotExist:
         # User는 있는데 SocialAccount가 없을 때 (=일반회원으로 가입된 이메일일때)
         return JsonResponse({'err_msg': 'email exists but not social user'}, status=status.HTTP_400_BAD_REQUEST)
-
-
-class GoogleLogin(SocialLoginView):
-    adapter_class = google_view.GoogleOAuth2Adapter
-    callback_url = GOOGLE_CALLBACK_URI
-    client_class = OAuth2Client
