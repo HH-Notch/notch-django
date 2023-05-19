@@ -24,6 +24,9 @@ urlpatterns = [
     path('google/callback/', views.google_callback, name='google_callback'),
     path('google/login/finish/', views.GoogleLogin.as_view(), name='google_login_todjango'),
 
+    # path('rest-auth/google/callback', views.google_login, name='call_back'),
+    # path('rest-auth/google/finish', views.GoogleLogin.as_view(), name='google_login_todjango'),
+
     # path('rest-auth/kakao/', views.KakaoLogin.as_view(), name='kakao'),
     # path('rest-auth/naver/', views.NaverLogin.as_view(), name='naver'),
     # path('rest-auth/google/', views.GoogleLogin.as_view(), name='google'),
