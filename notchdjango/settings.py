@@ -15,6 +15,8 @@ import os
 import json
 import sys
 from datetime import timedelta
+with open('secrets.json') as s:
+    json_object = json.load(s)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -201,9 +203,9 @@ AUTHENTICATION_BACKENDS = {
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'APP': {
-            'client_id',
-            'secret',
-            'key',
+            'client_id': json_object['SOCIAL_AUTH_GOOGLE_CLIENT_ID'],
+            'secret': json_object['SOCIAL_AUTH_GOOGLE_SECRET'],
+            'key': ''
         },
         'SCOPE': [
             # 'profile',
