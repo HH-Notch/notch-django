@@ -6,7 +6,7 @@ from rest_framework import serializers
 class AccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
-        fields = ['id', 'email', 'first_name', 'last_name']  # 'spouse_name', 'date_of_birth'
+        fields = '__all__'
 
 
 class ToggleSerializer(serializers.ModelSerializer):
