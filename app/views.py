@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from rest_framework.viewsets import ModelViewSet
-# from .models import *
+from .models import *
 from .serializer import *
 from allauth.socialaccount.models import SocialAccount
 from django.conf import settings
@@ -12,6 +12,11 @@ from django.http import JsonResponse
 import requests
 from rest_framework import status
 from json.decoder import JSONDecodeError
+from django.db import models
+from django.db.models import *
+from rest_framework.decorators import action
+from rest_framework.response import Response
+from rest_framework.views import APIView
 # Create your views here.
 
 
@@ -23,6 +28,31 @@ class AccountViewSet(ModelViewSet):
 class ToggleViewSet(ModelViewSet):
     queryset = Toggle.objects.all()
     serializer_class = ToggleSerializer
+
+
+class MorningBlockViewSet(ModelViewSet):
+    queryset = MorningBlock.objects.all()
+    serializer_class = MorningBlockSerializer
+
+
+class AfternoonBlockViewSet(ModelViewSet):
+    queryset = AfternoonBlock.objects.all()
+    serializer_class = AfternoonBlockSerializer
+
+
+class EveningBlockViewSet(ModelViewSet):
+    queryset = EveningBlock.objects.all()
+    serializer_class = EveningBlockSerializer
+
+
+class MorningMusicListViewSet(ModelViewSet):
+    queryset = MorningMusicList.objects.all()
+    serializer_class = MorningMusicListSerializer
+
+
+class MorningDestListViewSet(ModelViewSet):
+    queryset = MorningDestList.objects.all()
+    serializer_class = MorningDestListSerializer
 
 
 def base(request):

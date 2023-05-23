@@ -24,7 +24,7 @@ class Account(AbstractUser):
 
 class Toggle(models.Model):
     # id = models.AutoField(primary_key=True)
-    account_id = models.ForeignKey('Account', on_delete=models.CASCADE)
+    # account_id = models.ForeignKey('Account', on_delete=models.CASCADE)
 
     mor_weather = models.IntegerField(default=1)
     mor_todo = models.IntegerField(default=1)
@@ -42,30 +42,37 @@ class Toggle(models.Model):
     eve_sleep = models.IntegerField(default=1)
 
 
-class MorningWeather(models.Model):
-    account_id = models.ForeignKey('Account', on_delete=models.CASCADE)
+class MorningBlock(models.Model):
     name = models.CharField(max_length=15, null=False, default='weather')
-    text = models.CharField(max_length=15, null=False, default='오늘의 날씨 알려주기')
+    text = models.CharField(max_length=30, null=False, default='오늘의 날씨 알려주기')
     turn = models.IntegerField(null=False, default=1)
-
-
-class MorningTodo(models.Model):
-    account_id = models.ForeignKey('Account', on_delete=models.CASCADE)
-    name = models.CharField(max_length=15, null=False, default='todo')
-    text = models.CharField(max_length=15, null=False, default='오늘의 할일 브리핑')
-    turn = models.IntegerField(null=False, default=1)
-
-
-class MorningPathfind(models.Model):
-    account_id = models.ForeignKey('Account', on_delete=models.CASCADE)
-    name = models.CharField(max_length=15, null=False, default='destination')
-    text = models.CharField(max_length=15, null=False, default='목적지까지 길찾기')
-    turn = models.IntegerField(null=False, default=1)
+    playlists = models.TextField(null=True)
     dest_list = models.TextField(null=True)
 
 
-class MorningDestList(models.Model):
-    account_id = models.ForeignKey('Account', on_delete=models.CASCADE)
-    name = models.CharField(max_length=50, null=False, default='')
-    link = models.CharField(max_length=150, null=False, default='')
+class AfternoonBlock(models.Model):
+    name = models.CharField(max_length=15, null=False, default='weather')
+    text = models.CharField(max_length=30, null=False, default='오늘의 날씨 알려주기')
+    turn = models.IntegerField(null=False, default=1)
+    playlists = models.TextField(null=True)
+    link = models.CharField(max_length=150, null=True)
 
+
+class EveningBlock(models.Model):
+    name = models.CharField(max_length=15, null=False, default='weather')
+    text = models.CharField(max_length=30, null=False, default='오늘의 날씨 알려주기')
+    turn = models.IntegerField(null=False, default=1)
+    playlists = models.TextField(null=True)
+
+
+class MorningMusicList(models.Model):
+    name = models.CharField(max_length=50, null=False, default='')
+    link = models.CharField(max_length=150, null=True)
+
+
+class MorningDestList(models.Model):
+    name = models.CharField(max_length=50, null=False, default='')
+    address = models.CharField(max_length=100, null=False, default='')
+    latitude = models.CharField(max_length=20, null=False, default='')
+    longtitude = models.CharField(max_length=20, null=False, default='')
+    url = models.CharField(max_length=150, null=False, default='')

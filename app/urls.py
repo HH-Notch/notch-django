@@ -3,14 +3,21 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
 from . import views
+from .views import *
 
 router = DefaultRouter()
 router.register(r'account', views.AccountViewSet)
 router.register(r'toggle', views.ToggleViewSet)
+router.register(r'morningblock', views.MorningBlockViewSet)
+router.register(r'afternoonblock', views.AfternoonBlockViewSet)
+router.register(r'eveningblock', views.EveningBlockViewSet)
+router.register(r'morningmusiclist', views.MorningMusicListViewSet)
+router.register(r'morningdestlist', views.MorningDestListViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
 
+    # path('morning-blocks/', MorningBlockViewSet.as_view({'get': 'list'}), name='morning-blocks'),
     path('', views.base, name="base"),
     path('start/', views.start, name="start"),
     path('login/', views.start, name="login"),
