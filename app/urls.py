@@ -7,12 +7,16 @@ from .views import *
 
 router = DefaultRouter()
 router.register(r'account', views.AccountViewSet)
-router.register(r'toggle', views.ToggleViewSet)
-router.register(r'morningblock', views.MorningBlockViewSet)
-router.register(r'afternoonblock', views.AfternoonBlockViewSet)
-router.register(r'eveningblock', views.EveningBlockViewSet)
+router.register(r'goodmorning', views.GoodMorningViewSet)
+router.register(r'morningmusicname', views.MorningMusicNameViewSet, basename='morningmusicname')
 router.register(r'morningmusiclist', views.MorningMusicListViewSet)
+router.register(r'morningdestname', views.MorningDestNameViewSet, basename='morningdestname')
 router.register(r'morningdestlist', views.MorningDestListViewSet)
+router.register(r'goodafternoon', views.GoodAfternoonViewSet)
+router.register(r'afternoonstudymusicList', views.AfternoonStudyMusicListViewSet)
+router.register(r'goodevening', views.GoodEveningViewSet)
+router.register(r'eveningdiary', views.EveningDiaryViewSet)
+router.register(r'eveningsleepmusiclist', views.EveningSleepMusicListViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

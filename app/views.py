@@ -17,6 +17,8 @@ from django.db.models import *
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.decorators import api_view
+
 # Create your views here.
 
 
@@ -25,24 +27,14 @@ class AccountViewSet(ModelViewSet):
     serializer_class = AccountSerializer
 
 
-class ToggleViewSet(ModelViewSet):
-    queryset = Toggle.objects.all()
-    serializer_class = ToggleSerializer
+class GoodMorningViewSet(ModelViewSet):
+    queryset = GoodMorning.objects.all()
+    serializer_class = GoodMorningSerializer
 
 
-class MorningBlockViewSet(ModelViewSet):
-    queryset = MorningBlock.objects.all()
-    serializer_class = MorningBlockSerializer
-
-
-class AfternoonBlockViewSet(ModelViewSet):
-    queryset = AfternoonBlock.objects.all()
-    serializer_class = AfternoonBlockSerializer
-
-
-class EveningBlockViewSet(ModelViewSet):
-    queryset = EveningBlock.objects.all()
-    serializer_class = EveningBlockSerializer
+class MorningMusicNameViewSet(ModelViewSet):
+    queryset = MorningMusicList.objects.values_list('name', flat=True)
+    serializer_class = MorningMusicNameSerializer
 
 
 class MorningMusicListViewSet(ModelViewSet):
@@ -50,9 +42,39 @@ class MorningMusicListViewSet(ModelViewSet):
     serializer_class = MorningMusicListSerializer
 
 
+class MorningDestNameViewSet(ModelViewSet):
+    queryset = MorningDestList.objects.values_list('name', flat=True)
+    serializer_class = MorningDestNameSerializer
+
+
 class MorningDestListViewSet(ModelViewSet):
     queryset = MorningDestList.objects.all()
     serializer_class = MorningDestListSerializer
+
+
+class GoodAfternoonViewSet(ModelViewSet):
+    queryset = GoodAfternoon.objects.all()
+    serializer_class = GoodAfternoonSerializer
+
+
+class AfternoonStudyMusicListViewSet(ModelViewSet):
+    queryset = AfternoonStudyMusicList.objects.all()
+    serializer_class = AfternoonStudyMusicListSerializer
+
+
+class GoodEveningViewSet(ModelViewSet):
+    queryset = GoodEvening.objects.all()
+    serializer_class = GoodEveningSerializer
+
+
+class EveningDiaryViewSet(ModelViewSet):
+    queryset = EveningDiary.objects.all()
+    serializer_class = EveningDiarySerializer
+
+
+class EveningSleepMusicListViewSet(ModelViewSet):
+    queryset = EveningSleepMusicList.objects.all()
+    serializer_class = EveningSleepMusicListSerializer
 
 
 def base(request):
