@@ -23,6 +23,7 @@ class GoodMorning(models.Model):
     weather_turn = models.IntegerField(null=False, default=1)
     todo_turn = models.IntegerField(null=False, default=1)
     music_turn = models.IntegerField(null=False, default=1)
+    pathfind_turn = models.IntegerField(null=False, default=1)
 
 
 # List 네 가지

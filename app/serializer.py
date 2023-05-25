@@ -11,7 +11,7 @@ class AccountSerializer(serializers.ModelSerializer):
 class GoodMorningSerializer(serializers.ModelSerializer):
     class Meta:
         model = GoodMorning
-        fields = ['user_name', 'weather_turn', 'todo_turn', 'music_turn']
+        fields = ['user_name', 'weather_turn', 'todo_turn', 'music_turn', 'pathfind_turn']
 
 
 class MorningMusicNameSerializer(serializers.ModelSerializer):
