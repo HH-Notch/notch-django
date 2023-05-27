@@ -98,7 +98,7 @@ def main(request):
 
 
 state = getattr(settings, 'STATE')
-BASE_URL = 'http://localhost:8080/'
+BASE_URL = 'http://ec2-13-124-90-246.ap-northeast-2.compute.amazonaws.com:8080'
 GOOGLE_CALLBACK_URI = BASE_URL + 'app/google/callback/'
 
 

@@ -169,11 +169,13 @@ CORS_ALLOW_CREDENTIALS = True
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
+        # 'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.SessionAuthentication',
-        'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        # 'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
+        # 'rest_framework.authentication.TokenAuthentication',
+        # 'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
 
@@ -187,18 +189,20 @@ ACCOUNT_CONFIRM_EMAIL_ON_GET = False
 ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = '/?verification=1'
 ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = '/?verification=1'
 
-SITE_ID = 2
+SITE_ID = 3
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-REST_USE_JWT = False
-
-SIMPLE_JWT = {
-    # 'AUTH_HEADERS_TYPES': ('Bearer',),
-    'ACCESS_TOKEN_LIFETIME': timedelta(days=14),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=14),
-    'ROTATE_REFRESH_TOKENS': False,
-    'BLACKLIST_AFTER_ROTATION': True,
-}
+# REST_USE_JWT = True
+#
+# SIMPLE_JWT = {
+#     'AUTH_HEADERS_TYPES': ('Bearer',),
+#     'ACCESS_TOKEN_LIFETIME': timedelta(days=14),
+#     'REFRESH_TOKEN_LIFETIME': timedelta(days=14),
+#     'ROTATE_REFRESH_TOKENS': False,
+#     'BLACKLIST_AFTER_ROTATION': True,
+#     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+#     'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
+# }
 
 REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'app.serializer.AccountSerializer',
