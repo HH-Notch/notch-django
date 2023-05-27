@@ -45,6 +45,7 @@ ALLOWED_HOSTS = [
     '13.124.90.246',
     '.ap-northeast-2.compute.amazonaws.com',
     'ec2-13-124-90-246.ap-northeast-2.compute.amazonaws.com'
+    'ip-172-31-47-67.ap-northeast-2.compute.internal'
 ]
 
 

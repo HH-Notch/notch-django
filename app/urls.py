@@ -17,6 +17,9 @@ router.register(r'afternoonstudymusicList', views.AfternoonStudyMusicListViewSet
 router.register(r'goodevening', views.GoodEveningViewSet)
 router.register(r'eveningdiary', views.EveningDiaryViewSet)
 router.register(r'eveningsleepmusiclist', views.EveningSleepMusicListViewSet)
+router.register(r'morningblock', views.MorningBlockViewSet)
+router.register(r'afternoonblock', views.AfternoonBlockViewSet)
+router.register(r'eveningblock', views.EveningBlockViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

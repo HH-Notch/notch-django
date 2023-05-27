@@ -77,6 +77,21 @@ class EveningSleepMusicListViewSet(ModelViewSet):
     serializer_class = EveningSleepMusicListSerializer
 
 
+class MorningBlockViewSet(ModelViewSet):
+    queryset = MorningBlock.objects.all()
+    serializer_class = MorningBlockSerializer
+
+
+class AfternoonBlockViewSet(ModelViewSet):
+    queryset = AfternoonBlock.objects.all()
+    serializer_class = AfternoonBlockSerializer
+
+
+class EveningBlockViewSet(ModelViewSet):
+    queryset = EveningBlock.objects.all()
+    serializer_class = EveningBlockSerializer
+
+
 def base(request):
     context = {}
     return render(request, 'app/base.html', context)

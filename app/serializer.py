@@ -35,7 +35,7 @@ class MorningDestNameSerializer(serializers.ModelSerializer):
 class MorningDestListSerializer(serializers.ModelSerializer):
     class Meta:
         model = MorningDestList
-        fields = ['id', 'name', 'address', 'url']
+        fields = ['id', 'name', 'link']
 
 
 class GoodAfternoonSerializer(serializers.ModelSerializer):
@@ -65,4 +65,22 @@ class EveningDiarySerializer(serializers.ModelSerializer):
 class EveningSleepMusicListSerializer(serializers.ModelSerializer):
     class Meta:
         model = EveningSleepMusicList
+        fields = '__all__'
+
+
+class MorningBlockSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MorningBlock
+        fields = '__all__'
+
+
+class AfternoonBlockSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AfternoonBlock
+        fields = '__all__'
+
+
+class EveningBlockSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EveningBlock
         fields = '__all__'

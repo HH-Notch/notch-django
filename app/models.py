@@ -37,7 +37,7 @@ class MorningDestList(models.Model):
     address = models.CharField(max_length=100, null=False, default='')
     latitude = models.CharField(max_length=20, null=False, default='')
     longtitude = models.CharField(max_length=20, null=False, default='')
-    url = models.CharField(max_length=150, null=False, default='')
+    link = models.CharField(max_length=150, null=False, default='')
 
 
 class GoodAfternoon(models.Model):
@@ -69,6 +69,19 @@ class EveningSleepMusicList(models.Model):
     link = models.CharField(max_length=150, null=False, default='')
 
 
+class MorningBlock(models.Model):
+    name = models.CharField(max_length=50, null=False, default='')
+    text = models.CharField(max_length=50, null=False, default='')
+    turn = models.IntegerField(null=False, default=1)
 
 
+class AfternoonBlock(models.Model):
+    name = models.CharField(max_length=50, null=False, default='')
+    text = models.CharField(max_length=50, null=False, default='')
+    turn = models.IntegerField(null=False, default=1)
+    link = models.CharField(max_length=150, null=True)
 
+class EveningBlock(models.Model):
+    name = models.CharField(max_length=50, null=False, default='')
+    text = models.CharField(max_length=50, null=False, default='')
+    turn = models.IntegerField(null=False, default=1)
