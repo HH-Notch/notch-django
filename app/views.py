@@ -32,8 +32,14 @@ class GoodMorningViewSet(ModelViewSet):
 
 
 class MorningMusicNameViewSet(ModelViewSet):
-    queryset = MorningMusicList.objects.values()
+    queryset = MorningMusicList.objects.all()
     serializer_class = MorningMusicNameSerializer
+    @action(detail=False, methods=['get'])
+    def get_music_name(self, request):
+        serializer = self.get_serializer(self.queryset, many=True)
+        serialized_data = serializer.data
+        serialized_data_list = [data['name'] for data in serialized_data]
+        return Response(serialized_data_list)
 
 
 class MorningMusicListViewSet(ModelViewSet):
@@ -42,8 +48,14 @@ class MorningMusicListViewSet(ModelViewSet):
 
 
 class MorningDestNameViewSet(ModelViewSet):
-    queryset = MorningDestList.objects.values()
+    queryset = MorningDestList.objects.all()
     serializer_class = MorningDestNameSerializer
+    @action(detail=False, methods=['get'])
+    def get_dest_name(self, request):
+        serializer = self.get_serializer(self.queryset, many=True)
+        serialized_data = serializer.data
+        serialized_data_list = [data['name'] for data in serialized_data]
+        return Response(serialized_data_list)
 
 
 class MorningDestListViewSet(ModelViewSet):

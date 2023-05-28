@@ -17,7 +17,7 @@ class GoodMorningSerializer(serializers.ModelSerializer):
 class MorningMusicNameSerializer(serializers.ModelSerializer):
     class Meta:
         model = MorningMusicList
-        fields = ['name']
+        fields = '__all__'
 
 
 class MorningMusicListSerializer(serializers.ModelSerializer):
@@ -29,7 +29,7 @@ class MorningMusicListSerializer(serializers.ModelSerializer):
 class MorningDestNameSerializer(serializers.ModelSerializer):
     class Meta:
         model = MorningDestList
-        fields = ['name']
+        fields = '__all__'
 
 
 class MorningDestListSerializer(serializers.ModelSerializer):
