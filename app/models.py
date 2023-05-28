@@ -13,6 +13,7 @@ class Account(AbstractUser):
     objects = AccountManager()
     # spouse_name = models.CharField(blank=True, max_length=100)
     # date_of_birth = models.DateField(blank=True, null=True)
+
     def __str__(self):
         return self.email
 
@@ -80,6 +81,7 @@ class AfternoonBlock(models.Model):
     text = models.CharField(max_length=50, null=False, default='')
     turn = models.IntegerField(null=False, default=1)
     link = models.CharField(max_length=150, null=True)
+
 
 class EveningBlock(models.Model):
     name = models.CharField(max_length=50, null=False, default='')

@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from rest_framework.viewsets import ModelViewSet
-from .models import *
-from .serializer import *
+from app.models import *
+from app.serializer import *
 from allauth.socialaccount.models import SocialAccount
 from django.conf import settings
 from dj_rest_auth.registration.views import SocialLoginView
@@ -19,9 +19,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 
+
 # Create your views here.
-
-
 class AccountViewSet(ModelViewSet):
     queryset = Account.objects.all()
     serializer_class = AccountSerializer
@@ -33,7 +32,7 @@ class GoodMorningViewSet(ModelViewSet):
 
 
 class MorningMusicNameViewSet(ModelViewSet):
-    queryset = MorningMusicList.objects.values_list('name', flat=True)
+    queryset = MorningMusicList.objects.values()
     serializer_class = MorningMusicNameSerializer
 
 
@@ -43,7 +42,7 @@ class MorningMusicListViewSet(ModelViewSet):
 
 
 class MorningDestNameViewSet(ModelViewSet):
-    queryset = MorningDestList.objects.values_list('name', flat=True)
+    queryset = MorningDestList.objects.values()
     serializer_class = MorningDestNameSerializer
 
 

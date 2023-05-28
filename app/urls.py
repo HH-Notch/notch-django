@@ -1,9 +1,7 @@
 # from allauth.account.views import confirm_email
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-
 from . import views
-from .views import *
 
 router = DefaultRouter()
 router.register(r'account', views.AccountViewSet)
