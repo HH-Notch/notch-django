@@ -165,7 +165,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'www_dir', 'static')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # cors 관련 추가
-CORS_ORIGIN_WHITELIST = ['http://localhost:8080', 'http://127.0.0.1:8080', 'http://ec2-13-124-90-246.ap-northeast-2.compute.amazonaws.com:8080']
+CORS_ORIGIN_WHITELIST = ['http://localhost:8080', 'http://127.0.0.1:8080', 'http://ec2-13-124-90-246.ap-northeast-2.compute.amazonaws.com:8080', 'https://ec2-13-124-90-246.ap-northeast-2.compute.amazonaws.com:443', 'https://melodic-cassata-b47525.netlify.app']
 CORS_ALLOW_CREDENTIALS = True
 
 REST_FRAMEWORK = {
