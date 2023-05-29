@@ -41,7 +41,7 @@ class MorningDestListSerializer(serializers.ModelSerializer):
 class GoodAfternoonSerializer(serializers.ModelSerializer):
     class Meta:
         model = GoodAfternoon
-        fields = ['todo_turn', 'study_turn', 'nap_turn']
+        fields = ['todo_turn', 'study_turn', 'nap_turn', 'sleep_turn', 'sleep_time']
 
 
 class AfternoonNapMusicNameSerializer(serializers.ModelSerializer):
