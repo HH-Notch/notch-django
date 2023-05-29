@@ -114,7 +114,7 @@ class EveningSleepMusicNameViewSet(ModelViewSet):
     queryset = EveningSleepMusicList.objects.all()
     serializer_class = EveningSleepMusicNameSerializer
     @action(detail=False, methods=['get'])
-    def get_dest_name(self, request):
+    def get_sleepmusic_name(self, request):
         serializer = self.get_serializer(self.queryset, many=True)
         serialized_data = serializer.data
         serialized_data_list = [data['name'] for data in serialized_data]
