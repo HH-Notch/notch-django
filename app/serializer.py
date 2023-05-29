@@ -14,10 +14,10 @@ class GoodMorningSerializer(serializers.ModelSerializer):
         fields = ['user_name', 'weather_turn', 'todo_turn', 'music_turn', 'pathfind_turn']
 
 
-class MorningMusicNameSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = MorningMusicList
-        fields = '__all__'
+# class MorningMusicNameSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = MorningMusicList
+#         fields = '__all__'
 
 
 class MorningMusicListSerializer(serializers.ModelSerializer):
@@ -26,10 +26,10 @@ class MorningMusicListSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class MorningDestNameSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = MorningDestList
-        fields = '__all__'
+# class MorningDestNameSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = MorningDestList
+#         fields = '__all__'
 
 
 class MorningDestListSerializer(serializers.ModelSerializer):
@@ -44,10 +44,10 @@ class GoodAfternoonSerializer(serializers.ModelSerializer):
         fields = ['todo_turn', 'study_turn', 'nap_turn', 'sleep_turn', 'sleep_time']
 
 
-class AfternoonNapMusicNameSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = AfternoonNapMusicList
-        fields = '__all__'
+# class AfternoonNapMusicNameSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = AfternoonNapMusicList
+#         fields = '__all__'
 
 
 class AfternoonNapMusicListSerializer(serializers.ModelSerializer):
@@ -56,10 +56,10 @@ class AfternoonNapMusicListSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class AfternoonStudyMusicNameSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = AfternoonStudyMusicList
-        fields = '__all__'
+# class AfternoonStudyMusicNameSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = AfternoonStudyMusicList
+#         fields = '__all__'
 
 
 class AfternoonStudyMusicListSerializer(serializers.ModelSerializer):
@@ -80,10 +80,10 @@ class EveningDiarySerializer(serializers.ModelSerializer):
         fields = ['diary_turn', 'brainer_turn']
 
 
-class EveningSleepMusicNameSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = EveningSleepMusicList
-        fields = '__all__'
+# class EveningSleepMusicNameSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = EveningSleepMusicList
+#         fields = '__all__'
 
 
 class EveningSleepMusicListSerializer(serializers.ModelSerializer):

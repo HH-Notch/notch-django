@@ -31,9 +31,21 @@ class GoodMorningViewSet(ModelViewSet):
     serializer_class = GoodMorningSerializer
 
 
-class MorningMusicNameViewSet(ModelViewSet):
+# class MorningMusicNameViewSet(ModelViewSet):
+#     queryset = MorningMusicList.objects.all()
+#     serializer_class = MorningMusicNameSerializer
+    # @action(detail=False, methods=['get'])
+    # def get_music_name(self, request):
+    #     serializer = self.get_serializer(self.queryset, many=True)
+    #     serialized_data = serializer.data
+    #     serialized_data_list = [data['name'] for data in serialized_data]
+    #     return Response(serialized_data_list)
+
+
+class MorningMusicListViewSet(ModelViewSet):
     queryset = MorningMusicList.objects.all()
-    serializer_class = MorningMusicNameSerializer
+    serializer_class = MorningMusicListSerializer
+
     @action(detail=False, methods=['get'])
     def get_music_name(self, request):
         serializer = self.get_serializer(self.queryset, many=True)
@@ -42,25 +54,27 @@ class MorningMusicNameViewSet(ModelViewSet):
         return Response(serialized_data_list)
 
 
-class MorningMusicListViewSet(ModelViewSet):
-    queryset = MorningMusicList.objects.all()
-    serializer_class = MorningMusicListSerializer
-
-
-class MorningDestNameViewSet(ModelViewSet):
-    queryset = MorningDestList.objects.all()
-    serializer_class = MorningDestNameSerializer
-    @action(detail=False, methods=['get'])
-    def get_dest_name(self, request):
-        serializer = self.get_serializer(self.queryset, many=True)
-        serialized_data = serializer.data
-        serialized_data_list = [data['name'] for data in serialized_data]
-        return Response(serialized_data_list)
+# class MorningDestNameViewSet(ModelViewSet):
+#     queryset = MorningDestList.objects.all()
+#     serializer_class = MorningDestNameSerializer
+    # @action(detail=False, methods=['get'])
+    # def get_dest_name(self, request):
+    #     serializer = self.get_serializer(self.queryset, many=True)
+    #     serialized_data = serializer.data
+    #     serialized_data_list = [data['name'] for data in serialized_data]
+    #     return Response(serialized_data_list)
 
 
 class MorningDestListViewSet(ModelViewSet):
     queryset = MorningDestList.objects.all()
     serializer_class = MorningDestListSerializer
+
+    @action(detail=False, methods=['get'])
+    def get_music_name(self, request):
+        serializer = self.get_serializer(self.queryset, many=True)
+        serialized_data = serializer.data
+        serialized_data_list = [data['name'] for data in serialized_data]
+        return Response(serialized_data_list)
 
 
 class GoodAfternoonViewSet(ModelViewSet):
@@ -68,36 +82,50 @@ class GoodAfternoonViewSet(ModelViewSet):
     serializer_class = GoodAfternoonSerializer
 
 
-class AfternoonNapMusicNameViewSet(ModelViewSet):
-    queryset = AfternoonNapMusicList.objects.all()
-    serializer_class = AfternoonNapMusicNameSerializer
-    @action(detail=False, methods=['get'])
-    def get_napmusic_name(self, request):
-        serializer = self.get_serializer(self.queryset, many=True)
-        serialized_data = serializer.data
-        serialized_data_list = [data['name'] for data in serialized_data]
-        return Response(serialized_data_list)
+# class AfternoonNapMusicNameViewSet(ModelViewSet):
+#     queryset = AfternoonNapMusicList.objects.all()
+#     serializer_class = AfternoonNapMusicNameSerializer
+    # @action(detail=False, methods=['get'])
+    # def get_napmusic_name(self, request):
+    #     serializer = self.get_serializer(self.queryset, many=True)
+    #     serialized_data = serializer.data
+    #     serialized_data_list = [data['name'] for data in serialized_data]
+    #     return Response(serialized_data_list)
 
 
 class AfternoonNapMusicListViewSet(ModelViewSet):
     queryset = AfternoonNapMusicList.objects.all()
     serializer_class = AfternoonNapMusicListSerializer
 
-
-class AfternoonStudyMusicNameViewSet(ModelViewSet):
-    queryset = AfternoonStudyMusicList.objects.all()
-    serializer_class = AfternoonStudyMusicNameSerializer
     @action(detail=False, methods=['get'])
-    def get_studymusic_name(self, request):
+    def get_music_name(self, request):
         serializer = self.get_serializer(self.queryset, many=True)
         serialized_data = serializer.data
         serialized_data_list = [data['name'] for data in serialized_data]
         return Response(serialized_data_list)
 
 
+# class AfternoonStudyMusicNameViewSet(ModelViewSet):
+#     queryset = AfternoonStudyMusicList.objects.all()
+#     serializer_class = AfternoonStudyMusicNameSerializer
+    # @action(detail=False, methods=['get'])
+    # def get_studymusic_name(self, request):
+    #     serializer = self.get_serializer(self.queryset, many=True)
+    #     serialized_data = serializer.data
+    #     serialized_data_list = [data['name'] for data in serialized_data]
+    #     return Response(serialized_data_list)
+
+
 class AfternoonStudyMusicListViewSet(ModelViewSet):
     queryset = AfternoonStudyMusicList.objects.all()
     serializer_class = AfternoonStudyMusicListSerializer
+
+    @action(detail=False, methods=['get'])
+    def get_music_name(self, request):
+        serializer = self.get_serializer(self.queryset, many=True)
+        serialized_data = serializer.data
+        serialized_data_list = [data['name'] for data in serialized_data]
+        return Response(serialized_data_list)
 
 
 class GoodEveningViewSet(ModelViewSet):
@@ -110,20 +138,27 @@ class EveningDiaryViewSet(ModelViewSet):
     serializer_class = EveningDiarySerializer
 
 
-class EveningSleepMusicNameViewSet(ModelViewSet):
+# class EveningSleepMusicNameViewSet(ModelViewSet):
+#     queryset = EveningSleepMusicList.objects.all()
+#     serializer_class = EveningSleepMusicNameSerializer
+#     @action(detail=False, methods=['get'])
+#     def get_sleepmusic_name(self, request):
+#         serializer = self.get_serializer(self.queryset, many=True)
+#         serialized_data = serializer.data
+#         serialized_data_list = [data['name'] for data in serialized_data]
+#         return Response(serialized_data_list)
+
+
+class EveningSleepMusicListViewSet(ModelViewSet):
     queryset = EveningSleepMusicList.objects.all()
-    serializer_class = EveningSleepMusicNameSerializer
+    serializer_class = EveningSleepMusicListSerializer
+
     @action(detail=False, methods=['get'])
     def get_sleepmusic_name(self, request):
         serializer = self.get_serializer(self.queryset, many=True)
         serialized_data = serializer.data
         serialized_data_list = [data['name'] for data in serialized_data]
         return Response(serialized_data_list)
-
-
-class EveningSleepMusicListViewSet(ModelViewSet):
-    queryset = EveningSleepMusicList.objects.all()
-    serializer_class = EveningSleepMusicListSerializer
 
 
 class MorningBlockViewSet(ModelViewSet):
