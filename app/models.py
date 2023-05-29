@@ -86,6 +86,7 @@ class AfternoonBlock(models.Model):
     text = models.CharField(max_length=50, null=False, default='')
     turn = models.IntegerField(null=False, default=1)
     link = models.CharField(max_length=150, null=True)
+    sleep_time = models.IntegerField(null=True)
 
 
 class EveningBlock(models.Model):
