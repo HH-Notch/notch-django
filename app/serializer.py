@@ -35,7 +35,7 @@ class MorningDestNameSerializer(serializers.ModelSerializer):
 class MorningDestListSerializer(serializers.ModelSerializer):
     class Meta:
         model = MorningDestList
-        fields = ['id', 'name', 'link']
+        fields = ['id', 'name', 'address', 'link']
 
 
 class GoodAfternoonSerializer(serializers.ModelSerializer):
