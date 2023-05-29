@@ -41,7 +41,25 @@ class MorningDestListSerializer(serializers.ModelSerializer):
 class GoodAfternoonSerializer(serializers.ModelSerializer):
     class Meta:
         model = GoodAfternoon
-        fields = ['todo_turn', 'study_turn', 'nap_turn', 'nap_link']
+        fields = ['todo_turn', 'study_turn', 'nap_turn']
+
+
+class AfternoonNapMusicNameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AfternoonNapMusicList
+        fields = '__all__'
+
+
+class AfternoonNapMusicListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AfternoonNapMusicList
+        fields = '__all__'
+
+
+class AfternoonStudyMusicNameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AfternoonStudyMusicList
+        fields = '__all__'
 
 
 class AfternoonStudyMusicListSerializer(serializers.ModelSerializer):
@@ -60,6 +78,12 @@ class EveningDiarySerializer(serializers.ModelSerializer):
     class Meta:
         model = EveningDiary
         fields = ['diary_turn', 'brainer_turn']
+
+
+class EveningSleepMusicNameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EveningSleepMusicList
+        fields = '__all__'
 
 
 class EveningSleepMusicListSerializer(serializers.ModelSerializer):

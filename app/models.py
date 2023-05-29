@@ -45,10 +45,15 @@ class GoodAfternoon(models.Model):
     todo_turn = models.IntegerField(null=False, default=1)
     study_turn = models.IntegerField(null=False, default=1)
     nap_turn = models.IntegerField(null=False, default=1)
-    nap_link = models.CharField(max_length=150, null=False, default='')
+    # nap_link = models.CharField(max_length=150, null=False, default='')
 
 
 class AfternoonStudyMusicList(models.Model):
+    name = models.CharField(max_length=50, null=False, default='')
+    link = models.CharField(max_length=150, null=False, default='')
+
+
+class AfternoonNapMusicList(models.Model):
     name = models.CharField(max_length=50, null=False, default='')
     link = models.CharField(max_length=150, null=False, default='')
 
