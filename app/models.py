@@ -46,7 +46,7 @@ class GoodAfternoon(models.Model):
     study_turn = models.IntegerField(null=False, default=1)
     nap_turn = models.IntegerField(null=False, default=1)
     sleep_turn = models.IntegerField(null=False, default=1)
-    sleep_time = models.IntegerField(null=True)
+    sleep_time = models.IntegerField(null=True, default=6)
     # nap_link = models.CharField(max_length=150, null=False, default='')
 
 

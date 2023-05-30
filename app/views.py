@@ -30,6 +30,49 @@ class GoodMorningViewSet(ModelViewSet):
     queryset = GoodMorning.objects.all()
     serializer_class = GoodMorningSerializer
 
+    def perform_update(self, serializer):
+        instance = serializer.save()
+
+        # Get morning blocks
+        morning_blocks = MorningBlock.objects.filter(name__in=['weather', 'todo', 'music', 'pathfind'])
+
+        # Update the turn values in GoodMorning instance
+        for morning_block in morning_blocks:
+            if morning_block.name == 'weather':
+                instance.weather_turn = morning_block.turn
+            elif morning_block.name == 'todo':
+                instance.todo_turn = morning_block.turn
+            elif morning_block.name == 'music':
+                instance.music_turn = morning_block.turn
+            elif morning_block.name == 'pathfind':
+                instance.pathfind_turn = morning_block.turn
+
+        instance.save()
+
+    def list(self, request):
+        # Retrieve the first instance from the queryset
+        good_morning = self.get_queryset().first()
+
+        # Get the values from the MorningBlock instances
+        morning_blocks = MorningBlock.objects.filter(name__in=['weather', 'todo', 'music', 'pathfind'])
+
+        values = {}
+        for morning_block in morning_blocks:
+            values[morning_block.name + "_turn"] = morning_block.turn
+
+        # Update the values in GoodMorning instance
+        good_morning.weather_turn = values.get("weather_turn", 1)
+        good_morning.todo_turn = values.get("todo_turn", 1)
+        good_morning.music_turn = values.get("music_turn", 1)
+        good_morning.pathfind_turn = values.get("pathfind_turn", 1)
+        good_morning.save()
+
+        # Serialize the values
+        serializer = self.get_serializer(good_morning)
+
+        # Return the serialized data as the API response
+        return Response(serializer.data)
+
 
 # class MorningMusicNameViewSet(ModelViewSet):
 #     queryset = MorningMusicList.objects.all()
@@ -81,6 +124,49 @@ class GoodAfternoonViewSet(ModelViewSet):
     queryset = GoodAfternoon.objects.all()
     serializer_class = GoodAfternoonSerializer
 
+    def perform_update(self, serializer):
+        instance = serializer.save()
+
+        # Get morning blocks
+        afternoon_blocks = AfternoonBlock.objects.filter(name__in=['todo', 'study', 'nap', 'sleep'])
+
+        # Update the turn values in GoodMorning instance
+        for afternoon_block in afternoon_blocks:
+            if afternoon_block.name == 'todo':
+                instance.todo_turn = afternoon_block.turn
+            elif afternoon_block.name == 'study':
+                instance.study_turn = afternoon_block.turn
+            elif afternoon_block.name == 'nap':
+                instance.nap_turn = afternoon_block.turn
+            elif afternoon_block.name == 'sleep':
+                instance.sleep_time = afternoon_block.time
+
+        instance.save()
+
+    def list(self, request):
+        # Retrieve the first instance from the queryset
+        good_afternoon = self.get_queryset().first()
+
+        # Get the values from the MorningBlock instances
+        afternoon_blocks = AfternoonBlock.objects.filter(name__in=['todo', 'study', 'nap', 'sleep'])
+
+        values = {}
+        for afternoon_block in afternoon_blocks:
+            values[afternoon_block.name + "_turn"] = afternoon_block.turn
+
+        # Update the values in GoodMorning instance
+        good_afternoon.todo_turn = values.get("todo_turn", 1)
+        good_afternoon.study_turn = values.get("study_turn", 1)
+        good_afternoon.nap_turn = values.get("nap_turn", 1)
+        good_afternoon.sleep_turn = values.get("sleep_turn", 1)
+        good_afternoon.save()
+
+        # Serialize the values
+        serializer = self.get_serializer(good_afternoon)
+
+        # Return the serialized data as the API response
+        return Response(serializer.data)
+
 
 # class AfternoonNapMusicNameViewSet(ModelViewSet):
 #     queryset = AfternoonNapMusicList.objects.all()
@@ -131,6 +217,46 @@ class AfternoonStudyMusicListViewSet(ModelViewSet):
 class GoodEveningViewSet(ModelViewSet):
     queryset = GoodEvening.objects.all()
     serializer_class = GoodEveningSerializer
+
+    def perform_update(self, serializer):
+        instance = serializer.save()
+
+        # Get morning blocks
+        evening_blocks = EveningBlock.objects.filter(name__in=['today_feedback', 'tomorrow_brief', 'health'])
+
+        # Update the turn values in GoodMorning instance
+        for evening_block in evening_blocks:
+            if evening_block.name == 'today_feedback':
+                instance.today_feedback_turn = evening_block.turn
+            elif evening_block.name == 'tomorrow_brief':
+                instance.tomorrow_brief_turn = evening_block.turn
+            elif evening_block.name == 'health':
+                instance.health_turn = evening_block.turn
+
+        instance.save()
+
+    def list(self, request):
+        # Retrieve the first instance from the queryset
+        good_evening = self.get_queryset().first()
+
+        # Get the values from the MorningBlock instances
+        evening_blocks = EveningBlock.objects.filter(name__in=['today_feedback', 'tomorrow_brief', 'health'])
+
+        values = {}
+        for evening_block in evening_blocks:
+            values[evening_block.name + "_turn"] = evening_block.turn
+
+        # Update the values in GoodMorning instance
+        good_evening.today_feedback_turn = values.get("today_feedback_turn", 1)
+        good_evening.tomorrow_brief_turn = values.get("tomorrow_brief_turn", 1)
+        good_evening.health_turn = values.get("health_turn", 1)
+        good_evening.save()
+
+        # Serialize the values
+        serializer = self.get_serializer(good_evening)
+
+        # Return the serialized data as the API response
+        return Response(serializer.data)
 
 
 class EveningDiaryViewSet(ModelViewSet):
