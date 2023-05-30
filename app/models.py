@@ -58,6 +58,7 @@ class AfternoonStudyMusicList(models.Model):
 class AfternoonNapMusicList(models.Model):
     name = models.CharField(max_length=50, null=False, default='')
     link = models.CharField(max_length=150, null=False, default='')
+    nap_time = models.IntegerField(null=True)
 
 
 class GoodEvening(models.Model):
