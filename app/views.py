@@ -31,7 +31,9 @@ class GoodMorningViewSet(ModelViewSet):
     serializer_class = GoodMorningSerializer
 
     def perform_update(self, serializer):
+        queryset = GoodMorning.objects.all()
         instance = serializer.save()
+
 
         # Get morning blocks
         morning_blocks = MorningBlock.objects.filter(name__in=['weather', 'todo', 'music', 'pathfind'])
@@ -51,6 +53,7 @@ class GoodMorningViewSet(ModelViewSet):
 
     def list(self, request):
         # Retrieve the first instance from the queryset
+        queryset = GoodMorning.objects.all()
         good_morning = self.get_queryset().first()
 
         # Get the values from the MorningBlock instances
@@ -128,6 +131,7 @@ class GoodAfternoonViewSet(ModelViewSet):
     serializer_class = GoodAfternoonSerializer
 
     def perform_update(self, serializer):
+        queryset = GoodAfternoon.objects.all()
         instance = serializer.save()
 
         # Get morning blocks
@@ -148,6 +152,7 @@ class GoodAfternoonViewSet(ModelViewSet):
 
     def list(self, request):
         # Retrieve the first instance from the queryset
+        queryset = GoodAfternoon.objects.all()
         good_afternoon = self.get_queryset().first()
 
         # Get the values from the MorningBlock instances
@@ -224,6 +229,7 @@ class GoodEveningViewSet(ModelViewSet):
     serializer_class = GoodEveningSerializer
 
     def perform_update(self, serializer):
+        queryset = GoodEvening.objects.all()
         instance = serializer.save()
 
         # Get morning blocks
@@ -242,6 +248,7 @@ class GoodEveningViewSet(ModelViewSet):
 
     def list(self, request):
         # Retrieve the first instance from the queryset
+        queryset = GoodEvening.objects.all()
         good_evening = self.get_queryset().first()
 
         # Get the values from the MorningBlock instances
