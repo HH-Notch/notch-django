@@ -91,7 +91,8 @@ class MorningMusicListViewSet(ModelViewSet):
 
     @action(detail=False, methods=['get'])
     def get_mormusic_name(self, request):
-        serializer = self.get_serializer(self.queryset, many=True)
+        queryset = MorningMusicList.objects.all()
+        serializer = self.get_serializer(queryset, many=True)
         serialized_data = serializer.data
         serialized_data_list = [data['name'] for data in serialized_data]
         # print(serialized_data_list)
@@ -115,7 +116,8 @@ class MorningDestListViewSet(ModelViewSet):
 
     @action(detail=False, methods=['get'])
     def get_music_name(self, request):
-        serializer = self.get_serializer(self.queryset, many=True)
+        queryset = MorningDestList.objects.all()
+        serializer = self.get_serializer(queryset, many=True)
         serialized_data = serializer.data
         serialized_data_list = [data['name'] for data in serialized_data]
         return Response(serialized_data_list)
@@ -186,7 +188,8 @@ class AfternoonNapMusicListViewSet(ModelViewSet):
 
     @action(detail=False, methods=['get'])
     def get_music_name(self, request):
-        serializer = self.get_serializer(self.queryset, many=True)
+        queryset = AfternoonNapMusicList.objects.all()
+        serializer = self.get_serializer(queryset, many=True)
         serialized_data = serializer.data
         serialized_data_list = [data['name'] for data in serialized_data]
         return Response(serialized_data_list)
@@ -209,7 +212,8 @@ class AfternoonStudyMusicListViewSet(ModelViewSet):
 
     @action(detail=False, methods=['get'])
     def get_music_name(self, request):
-        serializer = self.get_serializer(self.queryset, many=True)
+        queryset = AfternoonStudyMusicList.objects.all()
+        serializer = self.get_serializer(queryset, many=True)
         serialized_data = serializer.data
         serialized_data_list = [data['name'] for data in serialized_data]
         return Response(serialized_data_list)
@@ -282,7 +286,8 @@ class EveningSleepMusicListViewSet(ModelViewSet):
 
     @action(detail=False, methods=['get'])
     def get_sleepmusic_name(self, request):
-        serializer = self.get_serializer(self.queryset, many=True)
+        queryset = EveningSleepMusicList.objects.all()
+        serializer = self.get_serializer(queryset, many=True)
         serialized_data = serializer.data
         serialized_data_list = [data['name'] for data in serialized_data]
         return Response(serialized_data_list)
