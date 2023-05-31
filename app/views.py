@@ -90,10 +90,11 @@ class MorningMusicListViewSet(ModelViewSet):
     serializer_class = MorningMusicListSerializer
 
     @action(detail=False, methods=['get'])
-    def get_music_name(self, request):
+    def get_mormusic_name(self, request):
         serializer = self.get_serializer(self.queryset, many=True)
         serialized_data = serializer.data
         serialized_data_list = [data['name'] for data in serialized_data]
+        # print(serialized_data_list)
         return Response(serialized_data_list)
 
 
